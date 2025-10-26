@@ -9,8 +9,15 @@ const updateCountDown =(deadline) => {
     const timeDifference = deadline - currentTime; // miliseconds
 
     //calculate days, hours, mins, secs from timeDifference
-    let calSecs= Math.floor(imeDifference / 1000)% 60;
-    console.log(calSecs);
+    let calSecs= Math.floor(imeDifference / 1000) % 60;
+    let calMins = Math.floor(timeDifference/1000/60) % 60;
+    let calHours =Math.floor(timeDifference/1000/60/60) % 24;
+    let calDays =Math.floor(timeDifference/1000/60/60/24);
+
+
+    //days.textContent = calDays;
+    secs.textContent = calSecs;
+    //console.log(days);
 }
 
 const countDown =(targetDate) => {

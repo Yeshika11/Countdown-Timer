@@ -12,7 +12,9 @@ body{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background: linear-gradient(145deg, #b70cb7, #06073d);
+    background-image: url('bg.jpg');
+    background-size: cover;
+    background-position: center;
     color: #fff;
 }
 

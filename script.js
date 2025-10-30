@@ -37,5 +37,5 @@ const countDown = (targetDate) => {
   setInterval(() => updateCountDown(targetDate), 1000);
 };
 
-const targetDate = new Date('January 1, 2026 07:00:00');
+const targetDate = new Date('December 1, 2025 07:00:00');
 countDown(targetDate);

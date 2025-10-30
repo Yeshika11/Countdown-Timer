@@ -1,32 +1,41 @@
 const days = document.getElementById('days');
 const hours = document.getElementById('hours');
 const mins = document.getElementById('mins');
-const secs= document.getElementById('secs');
+const secs = document.getElementById('secs');
 
+const updateCountDown = (deadline) => {
+  const currentTime = new Date();
+  const timeDifference = deadline - currentTime; // in milliseconds
 
-const updateCountDown =(deadline) => {
-    const currentTime = new Date();
-    const timeDifference = deadline - currentTime; // miliseconds
+  // If countdown is over
+  if (timeDifference <= 0) {
+    days.textContent = '00';
+    hours.textContent = '00';
+    mins.textContent = '00';
+    secs.textContent = '00';
+    return;
+  }
 
-    //calculate days, hours, mins, secs from timeDifference
-    let calSecs= Math.floor(imeDifference / 1000) % 60;
-    let calMins = Math.floor(timeDifference/1000/60) % 60;
-    let calHours =Math.floor(timeDifference/1000/60/60) % 24;
-    let calDays =Math.floor(timeDifference/1000/60/60/24);
+  const calDays = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+  const calHours = Math.floor((timeDifference / (1000 * 60 * 60)) % 24);
+  const calMins = Math.floor((timeDifference / (1000 * 60)) % 60);
+  const calSecs = Math.floor((timeDifference / 1000) % 60);
 
+  // Helper to pad numbers
+  const pad = (num) => num.toString().padStart(2, '0');
 
-    //days.textContent = calDays;
-    secs.textContent = calSecs;
-    //console.log(days);
-    
-}
+  days.textContent = pad(calDays);
+  hours.textContent = pad(calHours);
+  mins.textContent = pad(calMins);
+  secs.textContent = pad(calSecs);
+};
 
-const countDown =(targetDate) => {
-    setInterval(() => updateCountDown(targetDate), 1000);
+const countDown = (targetDate) => {
+  // Run immediately to avoid 1-second delay
+  updateCountDown(targetDate);
+  // Then update every second
+  setInterval(() => updateCountDown(targetDate), 1000);
+};
 
-
-}
-
-
-const targetDate = new Date("June 01 2023 07:00");
+const targetDate = new Date('January 1, 2026 07:00:00');
 countDown(targetDate);

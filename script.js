@@ -18,6 +18,7 @@ const updateCountDown =(deadline) => {
     //days.textContent = calDays;
     secs.textContent = calSecs;
     //console.log(days);
+    
 }
 
 const countDown =(targetDate) => {
